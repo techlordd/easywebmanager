@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Sidebar() {
     return (
             <div className="sidenav">
-          <a href="/">Dashboard</a>
-          <a href="/">Subscriptions</a>
+          <Link to="/">Dashboard</Link>
+          <Link to="/hosting">Hosting</Link>
+          <Link to="/ownership">Ownership</Link>
+          <Link to="/subscription">Subscriptions</Link>
           <a href="/">Hosting Features</a>
-          <a href="/">Add Site</a>
+          <Link to="/addsite">Add Site</Link>
         </div>
     )
 }

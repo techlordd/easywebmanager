@@ -75,6 +75,7 @@ footer{
     justify-content: center;
     align-items: center;
 }
+table.subscription{width: 70%;}
 
 @media (max-width: 500px){
     .sidenav {
@@ -82,11 +83,9 @@ footer{
     }
     .main { 
         width: 100%;
-        overflow-x:auto;
     }
     table {
         padding: 20px;
-
     }
     thead th:not(:nth-child(1)) {
         display: none;

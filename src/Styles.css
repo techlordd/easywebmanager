@@ -9,8 +9,15 @@ header {
     height: 100px;
     color: #fff;
 }
-
 nav {
+}
+form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+input {
+    width: 100%;
 }
 .container{
     display: flex;

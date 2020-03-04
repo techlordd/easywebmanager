@@ -4,19 +4,28 @@ const router = express.Router();
 const domainModel = require('../models/Domain');
 
 
-router.get('/', (req, res)=> {
-    return res.send('Post Route');
+router.get('/', async (req, res)=> {
+    try {
+        const domainList = await domainModel.find().sort({date: -1});
+        return res.json(domainList);       
+    } catch (err) {
+        console.error(err.message);
+        return res.status(400).send('Server Error');        
+    }
+    
 });
 
 router.post('/', async(req,res)=>{
-    const { domain_name, domain_created, domain_expiring, host_created } = req.body;
+    const { domain_name, domain_created, domain_expiring, host_name, host_created, host_expiring } = req.body;
 
     try {
         const newPost = new domainModel({
             domain_name,
             domain_created,
             domain_expiring,
-            host_created
+            host_name,
+            host_created,
+            host_expiring
         })
     
         const post = await newPost.save();
@@ -26,8 +35,6 @@ router.post('/', async(req,res)=>{
         console.error(err.message);
         return res.status(500).send('Server Error');
     }
-
-    
     
 })
 

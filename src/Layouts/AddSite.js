@@ -16,7 +16,9 @@ export default function AddSite() {
         domain_name, 
         domain_created,
         domain_expiring,
-        host_created
+        host_name,
+        host_created,
+        host_expiring
     } = formData;
 
     const onSubmit = async e => {
@@ -24,8 +26,10 @@ export default function AddSite() {
         const mydata = {
             domain_name,
             domain_created,
-            host_created,
             domain_expiring,
+            host_name,
+            host_created,
+            host_expiring
         }
 
         try {
@@ -35,8 +39,7 @@ export default function AddSite() {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post('/api/posts',body,config );
-        console.log(res.data);
+        await axios.post('/api/posts',body,config );
             
         } catch (err) {
             console.error(err.response.data);            
@@ -62,15 +65,19 @@ export default function AddSite() {
                 </div>
                 <div className="form-group">
                     <label>Domain Expiring:</label>
-                    <input type="text" name="domain_expiring" onChange={ e => onChange(e)}  value={domain_expiring}/>
+                    <input type="date" name="domain_expiring" onChange={ e => onChange(e)}  value={domain_expiring}/>
+                </div>
+                <div className="form-group">
+                    <label>Host Name:</label>
+                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={host_name}/>
                 </div>
                 <div className="form-group">
                     <label>Hosting Created at:</label>
-                    <input type="Datetime" name="host_created" onChange={ e => onChange(e)}  value={host_created} />
+                    <input type="date" name="host_created" onChange={ e => onChange(e)}  value={host_created} />
                 </div>
                 <div className="form-group">
                     <label>Hosting Expiring:</label>
-                    <input type="text"/>
+                    <input type="date" name="host_expiring" onChange={ e => onChange(e)}  value={host_expiring} />
                 </div>
                 <label>Owner:</label>
                 <input type="text"/>

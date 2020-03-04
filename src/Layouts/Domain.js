@@ -11,27 +11,26 @@ export default function Domain() {
 
     return (        
         <div className="main" >
-          
-            {domainLists.length ? domainLists.map(domainItem => 
-            <table key={domainItem._id}>
+          <table>
               <tbody><tr>
               <th>Domain Name</th>
               <th>Created</th>
               <th>Expiring</th>
               <th>Status</th>
             </tr></tbody>
-            
-            <tbody><tr key={domainItem._id}>
+            {domainLists.length ? domainLists.map(domainItem =>             
+            <tbody key={domainItem._id}>
+              <tr>
                 <th>{domainItem.domain_name}</th>
-                <td data-th="Domain Created: "> {domainItem.domain_created}</td>
-                <td data-th="Domain Expiring: "> {domainItem.domain_expiring}</td>
-                <td data-th="Status: "> Active</td>
+                <td data-th="Domain Created: ">{domainItem.domain_created}</td>
+                <td data-th="Domain Expiring: ">{domainItem.domain_expiring}</td>
+                <td data-th="Status: ">Active</td>
               </tr></tbody>
             
-                </table>                        
-            ): <h2>No data found</h2>}
+                                    
+            ): <tbody>No data found</tbody>}
            
-        
+           </table>    
         </div>
     )
 }

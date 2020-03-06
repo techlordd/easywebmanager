@@ -1,5 +1,6 @@
 import React , {useState, Fragment} from 'react';
 import axios  from 'axios';
+import moment from 'moment';
 
 export default function AddSite() {
     const [formData, setFormData] = useState({
@@ -8,7 +9,8 @@ export default function AddSite() {
         domain_expiring: '',
         host_name:'',
         host_created: '',
-        host_expire: '',
+        host_expiring: '',
+        
 
     });
 
@@ -52,9 +54,12 @@ export default function AddSite() {
     const onChange = e => {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
+
+  
     return (
         <Fragment>
             <form onSubmit={onSubmit}>
+                <h1> Domain an Hosting Details</h1>
                 <div className="form-group">
                     <label>Domain Name:</label>
                     <input type="text" name="domain_name" onChange={ e => onChange(e)} value={domain_name}/>
@@ -65,11 +70,14 @@ export default function AddSite() {
                 </div>
                 <div className="form-group">
                     <label>Domain Expiring:</label>
-                    <input type="date" name="domain_expiring" onChange={ e => onChange(e)}  value={domain_expiring}/>
+                    <input name="domain_expiring" onChange={ e => onChange(e)}  value={
+                        domain_created ? (moment(domain_created).add(1, 'y').format('MM/DD/YYYY')): ''
+                    }/>
                 </div>
+                
                 <div className="form-group">
                     <label>Host Name:</label>
-                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={host_name}/>
+                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={domain_name}/>
                 </div>
                 <div className="form-group">
                     <label>Hosting Created at:</label>
@@ -77,8 +85,12 @@ export default function AddSite() {
                 </div>
                 <div className="form-group">
                     <label>Hosting Expiring:</label>
-                    <input type="date" name="host_expiring" onChange={ e => onChange(e)}  value={host_expiring} />
+                    <input name="host_expiring" onChange={ e => onChange(e)}  value={
+                        host_created ? (moment(host_created).add(1, 'y').format('MM/DD/YYYY')): ''
+                    }/>
+
                 </div>
+                <h1> Personal Details</h1>
                 <label>Owner:</label>
                 <input type="text"/>
                 <label>Address:</label>

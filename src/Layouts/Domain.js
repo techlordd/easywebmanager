@@ -38,8 +38,7 @@ export default function Domain() {
                   {
                  
                  moment().diff(moment(domainItem.domain_created), 'months') < 7 ? 'Active': 
-                 (moment().diff(moment(domainItem.domain_created), 'months') > 7) &&  
-                 (moment().diff(moment(domainItem.domain_created), 'months') < 12) ? 'Expiring Soon': 'Expired'
+                 (moment().diff(moment(domainItem.domain_created), 'months') > 12) ? 'Expired': 'Expiring soon'
                   }
 
              

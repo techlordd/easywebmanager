@@ -6,6 +6,10 @@ const DomainSchema = new Schema({
         type: String,
         
     },
+    domain_company:{
+        type: String,
+        
+    },
     domain_created:{
         type: String,
         
@@ -18,6 +22,10 @@ const DomainSchema = new Schema({
         type: String,
         
     },
+    host_company: {
+        type: String
+
+    },
     host_created:{
         type: String,
        
@@ -25,7 +33,52 @@ const DomainSchema = new Schema({
     host_expiring:{
         type:String,
        
-    }
+    },
+    contact_address: {
+        type: String
+    },
+    phone_number: {
+        type: Number
+    },
+    membership_id: {
+        type: mongoose.Schema.Types.ObjectId,
+    },
+    backup: {
+        type: Boolean
+    },
+    ssl: {
+        type: Boolean
+    },
+    security_upgrade: {
+        type: Boolean
+    },
+    theme_change: {
+        type: Boolean
+    },
+    seo: {
+        type: Boolean
+    },
+    digital_marketing: {
+        type: Boolean
+    },
+    package_type: {
+        type: String
+    },
+    package_price: {
+        type: String
+    },
+    subdomains: {
+        type: String
+    },
+    email_subscribed: {
+        type: String
+    },
+    storage_space: {
+        type: String
+    },
+    bandwidth: {
+        type: String
+    },
 
 });
 

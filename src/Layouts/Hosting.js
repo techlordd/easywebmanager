@@ -20,6 +20,7 @@ export default function Hosting() {
           <table>
               <tbody><tr>
               <th>Domain Name</th>
+              <th>Hosting Company</th>
               <th>Created</th>
               <th>Expiring</th>
               <th>Status</th>
@@ -28,6 +29,7 @@ export default function Hosting() {
             <tbody key={hostingItem._id}>
               <tr>
                 <th>{hostingItem.domain_name}</th>
+                <td>{hostingItem.host_company}</td>
                 <td data-th="Domain Created: ">{moment(hostingItem.host_created).format('DD-MM-YYYY')}</td>
                 <td data-th="Domain Expiring: ">
                  { 

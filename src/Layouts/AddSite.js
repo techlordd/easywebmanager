@@ -5,9 +5,11 @@ import moment from 'moment';
 export default function AddSite() {
     const [formData, setFormData] = useState({
         domain_name: '',
+        domain_company: '',
         domain_created: '',
         domain_expiring: '',
         host_name:'',
+        host_company: '',
         host_created: '',
         host_expiring: '',
         
@@ -16,9 +18,11 @@ export default function AddSite() {
 
     const {
         domain_name, 
+        domain_company,
         domain_created,
         domain_expiring,
         host_name,
+        host_company,
         host_created,
         host_expiring
     } = formData;
@@ -27,9 +31,11 @@ export default function AddSite() {
         e.preventDefault(); 
         const mydata = {
             domain_name,
+            domain_company,
             domain_created,
             domain_expiring,
             host_name,
+            host_company,
             host_created,
             host_expiring
         }
@@ -65,6 +71,10 @@ export default function AddSite() {
                     <input type="text" name="domain_name" onChange={ e => onChange(e)} value={domain_name}/>
                 </div>
                 <div className="form-group">
+                    <label>Domain Company:</label>
+                    <input type="text" name="domain_name" onChange={ e => onChange(e)} value={domain_company}/>
+                </div>
+                <div className="form-group">
                     <label>Domain Created at:</label>
                     <input type="date" name="domain_created" onChange={ e => onChange(e)}  value={domain_created}/>
                 </div>
@@ -77,7 +87,11 @@ export default function AddSite() {
                 
                 <div className="form-group">
                     <label>Host Name:</label>
-                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={domain_name}/>
+                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={host_name}/>
+                </div>
+                <div className="form-group">
+                    <label>Host Company:</label>
+                    <input type="text" name="host_name" onChange={ e => onChange(e)} value={host_company}/>
                 </div>
                 <div className="form-group">
                     <label>Hosting Created at:</label>
@@ -145,20 +159,20 @@ export default function AddSite() {
                     <option>InActive</option>
                 </select>
 
-                <h1> Hosting Features</h1>
-                <label>Price:</label>
+                <h1> Website Features</h1>
+                <label>Package Type:</label>
+                <input type="text"/>
+                <label>Package Price:</label>
                 <input type="text"/>
                 <label>Pages:</label>
                 <input type="text"/>
-                <label>Sub Domain:</label>
+                <label>SubDomains:</label>
                 <input type="text"/>
-                <label>Email:</label>
+                <label>Emails:</label>
                 <input type="email"/>
+                <label>Storage Diskspace:</label>
+                <input type="text"/>
                 <label>Bandwidth:</label>
-                <input type="text"/>
-                <label>Diskspace:</label>
-                <input type="text"/>
-                <label>RAM:</label>
                 <input type="text"/>
                 <input type="submit"/>
             </form>

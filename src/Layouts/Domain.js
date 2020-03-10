@@ -20,6 +20,7 @@ export default function Domain() {
           <table>
               <tbody><tr>
               <th>Domain Name</th>
+              <th>Domain Company</th>
               <th>Created</th>
               <th>Expiring</th>
               <th>Status</th>
@@ -28,6 +29,7 @@ export default function Domain() {
             <tbody key={domainItem._id}>
               <tr>
                 <th>{domainItem.domain_name}</th>
+                <td>{domainItem.domain_company}</td>
                 <td data-th="Domain Created: ">{moment(domainItem.domain_created).format('DD-MM-YYYY')}</td>
                 <td data-th="Domain Expiring: ">
                  { 

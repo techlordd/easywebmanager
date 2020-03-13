@@ -8,7 +8,7 @@ export default function Sidebar() {
           <Link to="/hosting">Hosting</Link>
           <Link to="/ownership">Ownership</Link>
           <Link to="/subscription">Subscriptions</Link>
-          <a href="/">Hosting Features</a>
+          <a href="/features">Website Features</a>
           <Link to="/addsite">Add Site</Link>
         </div>
     )

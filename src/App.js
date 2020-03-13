@@ -10,6 +10,7 @@ import Hosting from './Layouts/Hosting';
 import Ownership from './Layouts/Ownership';
 import Subscription from './Layouts/Subscription';
 import AddSite from './Layouts/AddSite';
+import WebsiteFeatures from './Layouts/WebsiteFeatures';
 
 function App() {
   return (      
@@ -24,7 +25,8 @@ function App() {
         <Route exact path="/ownership" component={Ownership}/>   
         <Route exact path="/subscription" component={Subscription}/>
         <Route exact path="/addsite" component={AddSite}/>
-        <Route path="*" component={ErrorPage}/>
+        <Route exact path="/features" component={WebsiteFeatures}/>
+         <Route path="*" component={ErrorPage}/> 
       </Switch>
       </div>
       

@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 export default function Ownership() {
+  const [ownershipData, setownershipData] = useState([]);
+  
+  useEffect(() => {
+    axios.get('/api/posts')
+    .then(res=> setownershipData(res.data));
+  });
+
     return (        
         <div className="main" >
           <table>
@@ -15,27 +24,15 @@ export default function Ownership() {
 
             </tr>
             </thead>
+            {ownershipData.length ? ownershipData.map(ownershipItem =>
             <tr>
-              <th>techlorddkonsult.com</th>
-              <td data-th="Contact Address: "> 14, xxx street, Lagos, Nigeria.</td>
-              <td data-th="Phone Number: "> +234-090xxxxxxx9</td>
-              <td data-th="Technology Used: "> 464b4u49cmddo</td>
-              <td data-th="Site Category: "> Mr Techlordd</td>
-            </tr>
-            <tr>
-            <th>techlorddkonsult.com</th>
-              <td data-th="Contact Address: "> 14, xxx street, Lagos, Nigeria.</td>
-              <td data-th="Phone Number: "> +234-090xxxxxxx9</td>
-              <td data-th="Technology Used: "> mf834b438</td>
-              <td data-th="Site Category: "> Mr Techmaster</td>
-            </tr>
-            <tr>
-            <th>techlorddkonsult.com</th>
-              <td data-th="Contact Address: "> 14, xxx street, Lagos, Nigeria.</td>
-              <td data-th="Phone Number: "> +234-090xxxxxxx9</td>
-              <td data-th="Technology Used: "> 2u4jufnfie6</td>
-              <td data-th="Site Category: "> Mr Blogger</td>
-            </tr>
+            <th>{ownershipItem.domain_name}</th>
+            <td data-th="Contact Address: "> {ownershipItem.contact_address}</td>
+            <td data-th="Phone Number: "> {ownershipItem.phone_number}</td>
+            <td data-th="Membership Id: "> {ownershipItem.membership_id}</td>
+            <td data-th="Site Owner: "> {ownershipItem.owner}</td>
+          </tr>   
+              ): <p>No data Found</p>}
           </table>
         </div>
     )

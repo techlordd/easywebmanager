@@ -2,6 +2,9 @@ body {
     margin: 0 auto;
     padding: 0;
 }
+.center{ 
+    text-align: center;
+}
 header {
     background: #333;
     position: fixed;
@@ -54,10 +57,17 @@ input {
 }
 .main {
     display: flex;
+    flex-direction: column;
     width: 70%;
     margin-left: 10px; 
-    justify-content: center;   
-    align-items: center;
+}
+.pagination {
+    display: flex;
+    flex-direction: row;
+}
+.pagination li {
+    display: inline;
+    padding: 10px;
 }
 table {
     width: 100%;
@@ -67,6 +77,7 @@ table {
 th,td {
     text-align: left;
 }
+
 th {
     padding: 0.5em;
 }

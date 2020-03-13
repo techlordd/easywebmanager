@@ -1,4 +1,4 @@
-import React , {useState, useEffect} from 'react';
+import React , {useState, useEffect, Fragment} from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -7,17 +7,43 @@ import moment from 'moment';
 
 export default function Domain() {
   const [domainLists, setDomainLists] = useState([]);
+  const [currentPage, setCurrentPage ] = useState(1);
+  const [postsPerPage] = useState(2);
 
   useEffect(() => {
-    axios.get('/api/posts')
-    .then(res => setDomainLists(res.data));  
-  });
-     
+    const fetchPosts = async () => {
+      const res = await axios.get('/api/posts');
+      setDomainLists(res.data);
+    }
+    fetchPosts();
+  },[]);
 
-    return (        
+  const indexOfLastPost = currentPage * postsPerPage;
+ 
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+ 
+  const currentPosts = domainLists.slice(indexOfFirstPost, indexOfLastPost);
+
+  const totalPosts = domainLists.length;
+
+  const pageNumbers = [];
+        
+  for(let i = 1; i <= Math.ceil(totalPosts/postsPerPage); i++){
+    console.log(`This is Page Nummber Before: ${pageNumbers}`)
+    pageNumbers.push(i);
+    console.log(`This is Page Number After: ${pageNumbers}`)
+    
+  }
+
+  const paginate = (pageNo) => setCurrentPage(pageNo);
+  
+
+    return (
+      <Fragment>       
      
         <div className="main" >
-          <table>
+          
+        <table>
               <tbody><tr>
               <th>Domain Name</th>
               <th>Domain Company</th>
@@ -25,7 +51,7 @@ export default function Domain() {
               <th>Expiring</th>
               <th>Status</th>
             </tr></tbody>
-            {domainLists.length ? domainLists.map(domainItem =>             
+            {currentPosts.length ? currentPosts.map(domainItem =>             
             <tbody key={domainItem._id}>
               <tr>
                 <th>{domainItem.domain_name}</th>
@@ -46,11 +72,40 @@ export default function Domain() {
              
                  </td>
               </tr></tbody>
+              
             
                                     
             ): <tbody><tr>No data found</tr></tbody>}
            
-           </table>    
-        </div>
+           </table>  
+
+           
+           
+           
+
+           {/* <div>
+           <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={domainLists.Length}
+            paginate={paginate} /></div>  */}
+
+         
+              <div className="pagination">
+              <nav>
+                <ul> {pageNumbers.map(number => (
+                <li key={number}>
+                <a onClick={()=>paginate(number)} href='#'>{number}</a>
+                </li>
+                ))}
+                </ul>
+              </nav>
+              </div>
+           
+
+           
+
+          
+      </div>
+        </Fragment> 
     )
 }

@@ -6,8 +6,9 @@ const domainModel = require('../models/Domain');
 
 router.get('/', async (req, res)=> {
     try {
-        const domainList = await domainModel.find().sort({date: -1});
-        return res.json(domainList);       
+        const domainList = await domainModel.find();
+        /* const domainList = await domainModel.paginate({}, {page: 1, limit:3 }); */
+        return res.json(domainList);     
     } catch (err) {
         console.error(err.message);
         return res.status(400).send('Server Error');        

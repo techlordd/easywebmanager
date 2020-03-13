@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate');
 
 const DomainSchema = new Schema({
     domain_name:{
@@ -81,5 +82,7 @@ const DomainSchema = new Schema({
     },
 
 });
+
+DomainSchema.plugin(mongoosePaginate)
 
 module.exports = Domain = mongoose.model('domainModel', DomainSchema);

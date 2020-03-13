@@ -1,6 +1,7 @@
 import React , {useState, Fragment} from 'react';
 import axios  from 'axios';
 import moment from 'moment';
+import uuid from 'uuid';
 
 export default function AddSite() {
     const [formData, setFormData] = useState({
@@ -105,6 +106,8 @@ export default function AddSite() {
 
                 </div>
                 <h1> Personal Details</h1>
+                <label>Membership ID:</label>
+                <input type="text" name="membership_id" value={uuid()}/>
                 <label>Owner:</label>
                 <input type="text"/>
                 <label>Address:</label>

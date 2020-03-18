@@ -13,8 +13,6 @@ export default function AddSite() {
         host_company: '',
         host_created: '',
         host_expiring: '',
-        
-
     });
 
     const {

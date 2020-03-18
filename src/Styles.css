@@ -69,6 +69,11 @@ input {
     display: inline;
     padding: 10px;
 }
+.fullwidth{
+    width: 100%;
+    
+}
+
 table {
     width: 100%;
     border-spacing: 0;
@@ -111,6 +116,7 @@ table.subscription{width: 70%;}
     td,th {
         display: block;
         clear: both;
+        
     }
     td[data-th]:before  {
         content: attr(data-th);
